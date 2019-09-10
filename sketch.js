@@ -8,7 +8,7 @@ function setup() {
     w = windowWidth;
     h = windowHeight
     createCanvas(w, h);
-    background(255)
+    background(60, 60, 50)
 
     start = millis()
     angleMode(DEGREES)
@@ -21,12 +21,15 @@ function setup() {
 }
 
 function draw() {
-    // background('rgba(255, 255, 255, 0.05)')
+    background('rgba(60, 60, 50, 0.02)')
+    // fill('rgba(55, 55, 55, 0.01)')
+    // fill(255, 1)
+    // rect(0, 0, w, h)
     dots.forEach((e, i) => {
         if (e.life > 4) {
-            fill('rgba(255,0,0,1)');
+            fill('rgba(255,50,0,1)');
         } else {
-            fill('rgba(0,0,255,1)');
+            fill('rgba(0,80,255,1)');
         }
 
         if (e.life > 0) {
