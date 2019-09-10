@@ -14,14 +14,21 @@ function setup() {
     angleMode(DEGREES)
     dots = Array()
 
-    dots.push(createDot({ y: 50 }))
-    dots.push(createDot({ x: 50 }))
+    dots.push(createDot({ x: w / 2 - 10, y: h / 2 - 10 }))
+
+    // noStroke()
+    stroke('rgba(0,0,0,0.2)')
 }
 
 function draw() {
     // background('rgba(255, 255, 255, 0.05)')
     dots.forEach((e, i) => {
-        fill(100);
+        if (e.life > 4) {
+            fill('rgba(255,0,0,1)');
+        } else {
+            fill('rgba(0,0,255,1)');
+        }
+
         if (e.life > 0) {
             e.life -= 1
         } else {
@@ -37,7 +44,7 @@ function draw() {
 
         e.x += cos(e.rot) * e.dx * ac
         e.y += sin(e.rot) * e.dy * ac
-        ellipse(e.x, e.y, 20, 20);
+        ellipse(e.x, e.y, 10, 10);
     });
 
     if (mouseIsPressed) {
@@ -50,6 +57,6 @@ function draw() {
 }
 
 function createDot(options) {
-    var d = { x: 0, y: 0, dx: 1, dy: 1, rot: 45, life: 20, cnt: 0 }
+    var d = { x: 0, y: 0, dx: 1, dy: 1, rot: 45, life: 10, cnt: 0 }
     return Object.assign(d, options)
 }
